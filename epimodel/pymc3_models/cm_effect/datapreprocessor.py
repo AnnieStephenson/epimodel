@@ -371,7 +371,7 @@ class DataPreprocessorV2(DataPreprocessor):
         NewDeaths = np.zeros(shape=Deaths.shape)
         NewDeaths[:, 1:] = Deaths[:, 1:] - Deaths[:, :-1]
         NewDeaths[np.isnan(NewDeaths)] = 0
-        NewDeaths[NewDeaths < 0] = np.nan
+        NewDeaths[NewDeaths <= 0] = np.nan
         NewDeaths = np.ma.masked_invalid(NewDeaths.astype(theano.config.floatX))
         NewDeaths = NewDeaths.astype(int)
 
